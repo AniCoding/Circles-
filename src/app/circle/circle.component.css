@@ -1,0 +1,9 @@
+.circle-item {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: white;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}

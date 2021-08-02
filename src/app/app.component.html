@@ -1,0 +1,38 @@
+<div class="container">
+  <form [formGroup]="paintForm">
+    <div>
+      <label for="circleCount">Circle Count: </label>
+      <select (change)="onCountChange()"
+      id="circleCount" formControlName="circleCount">
+        <option *ngFor="let count of counts" [value]="count">{{count}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="colorPicker">Color Picker: </label>
+      <input 
+       [colorPicker]="paintForm.get('color')?.value"
+       [value]="paintForm.get('color')?.value"
+       (colorPickerChange)="paintForm.get('color')?.setValue($event)"
+       [style.background]="paintForm.get('color')?.value"
+       class="colorPicker"
+       formControlName="color"
+       />
+    </div>
+    <div>
+       <button (click)="onGenerateClick()">Generate</button>
+       <button (click)="onDeleteClick()">Delete</button>
+      </div>
+  </form>
+
+  <div *ngIf="showCanvas"
+  
+  class="canvas">
+    <div *ngFor="let circle of getArrayOfGivenLength(getSqrtOfNumber(getCircleCount))">
+    <app-circle 
+      *ngFor="let circle of getArrayOfGivenLength(getSqrtOfNumber(getCircleCount))"
+      [background]="getColor"
+    >
+    </app-circle>
+    </div>
+  </div>
+</div>
